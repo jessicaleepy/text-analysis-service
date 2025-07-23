@@ -1,27 +1,27 @@
 {
   "topTenWords" : {
     "words" : [ "said", "alice", "little", "one", "gutenberg", "know", "project", "like", "went", "would" ],
-    "durationMs" : 16
+    "durationMs" : 57
   },
   "topFiveBigrams" : {
     "bigrams" : [ "said the", "of the", "said alice", "in a", "in the" ],
-    "durationMs" : 25
+    "durationMs" : 46
   },
   "longestWords" : {
     "words" : [ "unenforceability" ],
-    "durationMs" : 3
+    "durationMs" : 5
   },
   "palindromes" : {
     "palindromicWords" : [ "pop", "eye", "tut", "non", "did", "wow", "ada" ],
-    "durationMs" : 37
+    "durationMs" : 29
   },
   "wordLengthStats" : {
     "wordLength" : 3,
     "count" : 7676,
-    "durationMs" : 5
+    "durationMs" : 7
   },
   "sentenceWithHighestLexicalDiversity" : {
-    "sentence" : "“Well!” thought Alice to herself, “after such a fall as this, I shall think nothing of tumbling down stairs!",
-    "durationMs" : 37
+    "sentence" : "Would the fall _never_ come to an end?",
+    "durationMs" : 65
   }
 }

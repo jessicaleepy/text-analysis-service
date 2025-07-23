@@ -38,6 +38,14 @@ public class LexicalDiversityServiceTest {
     }
 
     @Test
+    void analyze_givenMultipleSentencesWithinQuote_thenReturnTheWholeSentence() {
+        String s1 = "\"You are smart. He is funny and she is kind!\"";
+        String s2 = "He is smart.";
+        LexicalDiversityResult r = lexicalDiversityService.analyze(s1 + " " + s2);
+        assertEquals(s1, r.sentence());
+    }
+
+    @Test
     void analyze_givenTieInDiversity_thenReturnFirstEncounteredSentence() {
         String s1 = "Alpha beta gamma delta epsilon!";
         String s2 = "Zebra yak xerus wombat quokka!";

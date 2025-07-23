@@ -20,16 +20,30 @@ public class TextCleaner {
         StringBuilder current = new StringBuilder();
 
         String cleaned = input.replace('\r', ' ').replace('\n', ' ').replaceAll("\\s+", " ").trim();
+        boolean inQuote = false;
 
         int i = 0;
         while (i < cleaned.length()) {
             char c = cleaned.charAt(i);
             current.append(c);
 
+            if (isOpeningPunctuation(c)) {
+                inQuote = true;
+            }
+
             // Look for end punctuation
             if (c == '.' || c == '!' || c == '?') {
                 int j = i + 1;
 
+                if (j < cleaned.length() && inQuote) {
+                    if(isClosingPunctuation(cleaned.charAt(j))) {
+                        inQuote = false;
+                    }
+                    else {
+                        i++;
+                        continue;
+                    }
+                }
                 // Include trailing quotes or brackets after the punctuation
                 while (j < cleaned.length() && isTrailingPunctuation(cleaned.charAt(j))) {
                     current.append(cleaned.charAt(j));
@@ -40,6 +54,7 @@ public class TextCleaner {
                 // Case 1: space + quote/bracket + uppercase
                 // Case 2: space + uppercase
                 // Case 3: end of input
+
                 if (
                         (j < cleaned.length() - 2 &&
                                 cleaned.charAt(j) == ' ' &&
@@ -73,7 +88,12 @@ public class TextCleaner {
     private static boolean isTrailingPunctuation(char c) {
         return c == '"' || c == '\'' || c == ')' || c == ']' || c == '}';
     }
+
     private static boolean isOpeningPunctuation(char c) {
         return c == '"' || c == '\'' || c == '“' || c == '(' || c == '[' || c == '{';
+    }
+
+    private static boolean isClosingPunctuation(char c) {
+        return c == '"' || c == '\'' || c == '”' || c == ')' || c == ']' || c == '}';
     }
 }
