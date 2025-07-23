@@ -30,13 +30,16 @@ public class TextCleaner {
             if (c == '.' || c == '!' || c == '?') {
                 int j = i + 1;
 
-                // Skip any trailing quotes or brackets
+                // Include trailing quotes or brackets after the punctuation
                 while (j < cleaned.length() && isTrailingPunctuation(cleaned.charAt(j))) {
                     current.append(cleaned.charAt(j));
                     j++;
                 }
 
-                // Check for space + uppercase letter (new sentence)
+                // Determine if a new sentence follows:
+                // Case 1: space + quote/bracket + uppercase
+                // Case 2: space + uppercase
+                // Case 3: end of input
                 if (
                         (j < cleaned.length() - 2 &&
                                 cleaned.charAt(j) == ' ' &&
@@ -59,7 +62,7 @@ public class TextCleaner {
             i++;
         }
 
-        // Add the last sentence if anything left
+        // Add the last sentence (i.e. the end of input) if anything left
         if (current.length() > 0) {
             sentences.add(current.toString().trim());
         }
