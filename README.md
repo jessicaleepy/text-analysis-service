@@ -1,6 +1,5 @@
 # Text Analysis Service
 
-
 ---
 
 ## 🧰 Java Version
@@ -9,6 +8,26 @@
 - **Maven:** 3.9.11
 
 ---
+## 📖 Introduction
+This Spring Boot application analyzes the text of Alice’s Adventures in Wonderland and computes a variety of statistics and linguistic insights, such as:
+
+- Top 10 most frequent meaningful words (excluding stop words)
+
+- Top 5 most common bigrams
+
+- Longest words
+
+- Palindromic words
+
+- Most common word length
+
+- Sentence with the highest lexical diversity
+
+## 📥 Input
+The analysis is performed on the full text of Alice’s Adventures in Wonderland, sourced from Project Gutenberg:
+
+🔗 https://www.gutenberg.org/cache/epub/11/pg11.txt
+
 ## 🛠️ Build & Run Instructions
 
 ### ✅ Prerequisites
