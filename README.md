@@ -99,6 +99,8 @@ The analysis is performed on the full text of Alice’s Adventures in Wonderland
 - Top 10 Words and Top 5 Bigrams:
   - Sorted first by frequency (descending).
   - Then by alphabetical order (ascending) to break ties.
+- Longest Words:
+  - If there are multiple longest words with the same length, they are sorted in alphabetical order (ascending)
 - Most Common Word Length:
     - If multiple lengths have the same count, the shorter length is selected.
 - Sentence with the Highest Lexical Diversity:
