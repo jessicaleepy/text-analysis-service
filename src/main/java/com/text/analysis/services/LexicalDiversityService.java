@@ -44,13 +44,13 @@ public class LexicalDiversityService {
     }
 
     private boolean isValidSentence(String s) {
-        if (s == null) return false;
+        if (s == null || s.isEmpty()) return false;
         String TRAIL = "\"'”’)]}";
 
         // require end punctuation (ignore trailing quotes/parens)
         int i = s.length() - 1;
         while (i >= 0 && TRAIL.indexOf(s.charAt(i)) >= 0) i--;
-        if (i < 0) return false;                      // only quotes, no content
+        if (i < 0) return false;    // only quotes, no content
 
         char last = s.charAt(i);
         if (last != '.' && last != '!' && last != '?') return false;
