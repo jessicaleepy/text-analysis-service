@@ -48,7 +48,7 @@ The analysis is performed on the full text of Alice’s Adventures in Wonderland
 
 ### 🔤 Word Processing Assumptions
 
-- Only words with two or more characters are considered in palindrome and top words analyses. Single-letter words are excluded from both.
+- Only words with two or more characters are considered in top words and palindrome analyses. Single-letter words are excluded from both.
 - Words made up of repeating single characters (e.g. "iii", "www") are excluded in palindrome and top words analyses.
 - Words are case-insensitive.
 - Words containing digits (e.g., "1A1") are excluded.
