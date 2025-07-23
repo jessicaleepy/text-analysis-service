@@ -52,5 +52,4 @@ public class LexicalDiversityServiceTest {
         LexicalDiversityResult r = lexicalDiversityService.analyze(heading + " " + body);
         assertEquals(body, r.sentence());
     }
-
 }

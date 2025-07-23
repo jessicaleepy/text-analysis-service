@@ -91,5 +91,4 @@ public class BigramServiceTest {
         assertEquals("hello world", bigrams.get(0));
         assertTrue(bigrams.contains("world hello"));
     }
-
 }

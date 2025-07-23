@@ -75,5 +75,4 @@ public class WordLengthCountServiceTest {
         assertEquals(5, result.wordLength());
         assertEquals(2, result.count());
     }
-
 }
