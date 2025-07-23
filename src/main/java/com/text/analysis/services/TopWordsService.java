@@ -29,11 +29,11 @@ public class TopWordsService {
             "other", "some", "such",
             "no", "nor", "not", "only", "own", "same", "so",
             "than", "too", "very",
-            "s", "t", "can", "will", "just", "don", "should", "now",
+            "s", "t", "can", "can't", "will", "just", "don't", "should", "now",
             "d", "ll", "m", "o", "re", "ve", "y",
-            "ain", "aren", "couldn", "didn", "doesn", "hadn", "hasn",
-            "haven", "isn", "ma", "mightn", "mustn", "needn",
-            "shan", "shouldn", "wasn", "weren", "won", "wouldn"
+            "ain", "aren't", "couldn't", "didn't", "doesn't", "hadn't", "hasn't",
+            "haven't", "isn't", "ma", "mightn't", "mustn't", "needn't",
+            "shan't", "shouldn't", "wasn't", "weren't", "won't", "wouldn't"
     );
 
     public TopWordsResult analyze(String[] cleaned) {
@@ -41,7 +41,9 @@ public class TopWordsService {
 
         Map<String, Integer> map = new HashMap<>();
         for(String word : cleaned) {
-            if(word.isEmpty() || stopWords.contains(word) || word.chars().anyMatch(Character::isDigit)) continue;
+            if(word.isEmpty() || stopWords.contains(word) || word.chars().anyMatch(Character::isDigit) || word.length() < 2) continue;
+            boolean singleChar = word.chars().distinct().limit(2).count() == 1;
+            if (singleChar) continue;
             map.merge(word, 1, Integer::sum);
         }
 

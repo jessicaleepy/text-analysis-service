@@ -21,7 +21,7 @@ public class TopWordsServiceTest {
 
         assertTrue(words.containsAll(List.of("said", "nice", "smart", "appreciate")));
         assertFalse(words.contains("you"));
-        assertTrue(words.size() <= 10);
+        assertEquals(4, words.size());
         assertEquals("said", words.get(0));
     }
 
@@ -52,17 +52,29 @@ public class TopWordsServiceTest {
     }
 
     @Test
-    void analyze_givenContractions_thenKeepsThemAsWords() {
-        String input = "Don't don't DON'T can't cant swim";
-        String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
+    void analyze_givenWordsWithSingleCharacter_thenExcludeThem() {
+        String[] input = { "a", "b", "c", "hello", "world", "a" };
+        TopWordsResult result = topWordsService.analyze(input);
 
-        TopWordsResult result = topWordsService.analyze(cleanedWords);
         List<String> words = result.words();
-        assertEquals(4, words.size());
-        assertTrue(words.contains("don't"));
-        assertTrue(words.contains("can't"));
-        assertTrue(words.contains("cant"));
-        assertTrue(words.contains("swim"));
+        assertFalse(words.contains("a"));
+        assertFalse(words.contains("b"));
+        assertFalse(words.contains("c"));
+        assertTrue(words.contains("hello"));
+        assertTrue(words.contains("world"));
+    }
+
+    @Test
+    void analyze_givenSingleRepeatedCharacterWords_thenExcludeThem() {
+        String[] input = { "ii", "aaa", "www", "wow", "book" };
+        TopWordsResult result = topWordsService.analyze(input);
+
+        List<String> words = result.words();
+        assertFalse(words.contains("ii"));
+        assertFalse(words.contains("aaa"));
+        assertFalse(words.contains("www"));
+        assertTrue(words.contains("wow"));
+        assertTrue(words.contains("book"));
     }
 
     @Test
