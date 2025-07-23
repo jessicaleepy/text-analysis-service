@@ -17,7 +17,7 @@ public class WordLengthCountServiceTest {
 
         WordLengthResult result = wordLengthCountService.analyze(cleanedWords);
 
-        assertEquals(2, result.wordLength());   // "hi","go","ok" -> len 2 (3 times)
+        assertEquals(2, result.wordLength());
         assertEquals(3, result.count());
     }
 
