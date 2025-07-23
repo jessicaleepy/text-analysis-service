@@ -93,8 +93,14 @@ The analysis is performed on the full text of Alice’s Adventures in Wonderland
   - Converting to lowercase. 
   - Replacing non-letter characters (except apostrophes) with spaces. 
   - Collapsing multiple whitespaces into single spaces.
-- Sentence splitting accounts for edge cases like trailing quotes or brackets and smart punctuation.
-
+- Sentences are identified using the following rules:
+  - A sentence ends with `.`, `!`, or `?`, possibly followed by quotes or brackets (e.g. `"`, `)`, `]`).
+  - A new sentence begins if the next character is:
+    - An uppercase letter (e.g. `"Hello." She waved.`), or
+    - An opening quote or bracket followed by an uppercase letter (e.g. `("Yes.")`).
+  - Quotes are respected:
+    - If a sentence-ending punctuation (like `.`, `!`, or `?`) appears inside an open quote, it is not treated as the end of a sentence unless it is immediately followed by a matching closing quote or bracket.
+  
 ### 🔁 Tie-Breaking Rules
 - Top 10 Words and Top 5 Bigrams:
   - Sorted first by frequency (descending).
