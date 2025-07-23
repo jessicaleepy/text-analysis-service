@@ -26,7 +26,7 @@ public class BigramServiceTest {
     }
 
     @Test
-    void analyze_givenMoreThanFiveDistinctBigrams_returnsOnlyTopFive_inAlphaOrder() {
+    void analyze_givenMoreThanFiveDistinctBigrams_thenReturnsOnlyTopFive_inAlphaOrder() {
         String input = "a b c d e f g h i j k l m n";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -41,7 +41,7 @@ public class BigramServiceTest {
     }
 
     @Test
-    void analyze_whenCountsEqual_returnTopFive_inAlphaOrder() {
+    void analyze_whenCountsEqual_thenReturnTopFive_inAlphaOrder() {
         String input = "beta gamma alpha delta";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -53,7 +53,7 @@ public class BigramServiceTest {
     }
 
     @Test
-    void analyze_givenBigramsContainingDigits() {
+    void analyze_givenBigramsContainingDigits_thenReturnResultWithoutDigits() {
         String input = "hello 123 world 9 lives hello world";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -66,7 +66,7 @@ public class BigramServiceTest {
     }
 
     @Test
-    void analyze_givenWordsWithApostrophes() {
+    void analyze_givenWordsWithApostrophes_thenReturnThem() {
         String input = "don't stop don't move";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -80,7 +80,7 @@ public class BigramServiceTest {
     }
 
     @Test
-    void analyze_withPunctuation_handlesItCorrectly() {
+    void analyze_givenWordsWithPunctuation_thenReturnCorrectly() {
         String input = "Hello, world! Hello... world?";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 

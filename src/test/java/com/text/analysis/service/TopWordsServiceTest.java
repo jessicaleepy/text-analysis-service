@@ -78,7 +78,7 @@ public class TopWordsServiceTest {
     }
 
     @Test
-    void analyze_givenOnlyStopwords_thenReturnsEmptyList() {
+    void analyze_givenOnlyStopWords_thenReturnsEmptyList() {
         String input = "the and or but if we you they she he it";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -97,6 +97,5 @@ public class TopWordsServiceTest {
         assertFalse(words.contains("123"));
         assertFalse(words.contains("456"));
         assertFalse(words.contains("789"));
-
     }
 }

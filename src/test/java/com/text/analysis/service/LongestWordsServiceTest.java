@@ -14,7 +14,7 @@ public class LongestWordsServiceTest {
     private final LongestWordService longestWordService = new LongestWordService();
 
     @Test
-    void analyze_givenSingleLongestWord_returnsThatWord() {
+    void analyze_givenSingleLongestWord_thenReturnThatWord() {
         String input = "cat hippopotamus dog";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -23,7 +23,7 @@ public class LongestWordsServiceTest {
     }
 
     @Test
-    void analyze_givenTieForMaxLength_returnResult_sortedAlphabetically() {
+    void analyze_givenTieForMaxLength_thenReturnResult_sortedAlphabetically() {
         String input = "alpha beta gamma delta zzzzzz zzzzza";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -34,7 +34,7 @@ public class LongestWordsServiceTest {
     }
 
     @Test
-    void analyze_givenDuplicates_returnResultWithoutDuplicates() {
+    void analyze_givenDuplicates_thenReturnResultWithoutDuplicates() {
         String input = "pneumonoultramicroscopicsilicovolcanoconiosis pneumonoultramicroscopicsilicovolcanoconiosis short short";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -44,7 +44,7 @@ public class LongestWordsServiceTest {
     }
 
     @Test
-    void analyze_givenWordsWithApostrophes_returnResult_sortedAlphabetically() {
+    void analyze_givenWordsWithApostrophes_thenReturnResult_sortedAlphabetically() {
         String input = "don't can't can";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -55,7 +55,7 @@ public class LongestWordsServiceTest {
     }
 
     @Test
-    void analyze_givenWordsWithdigit_returnResultWithNoDigit() {
+    void analyze_givenWordsWithDigits_thenReturnResultWithNoDigit() {
         String input = "abc12345 xyz 1234567";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -64,7 +64,7 @@ public class LongestWordsServiceTest {
     }
 
     @Test
-    void analyze_whenPunctuationPresent_wordsAreNotMerged() {
+    void analyze_whenPunctuationPresent_thenReturnWordsThatAreNotMerged() {
         String input = "hello,world!!! super-long-word";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 

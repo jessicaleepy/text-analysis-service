@@ -10,7 +10,7 @@ public class LexicalDiversityServiceTest {
     private final LexicalDiversityService lexicalDiversityService = new LexicalDiversityService();
 
     @Test
-    void analyze_givenMultipleSentences_returnsSentenceWithHighestDiversity() {
+    void analyze_givenMultipleSentences_thenReturnSentenceWithHighestDiversity() {
         String s1 = "Blue blue cars race fast fast every day.";
         String s2 = "Quantum mechanics puzzles curious minds daily!";
         String input = s1 + " " + s2;
@@ -21,7 +21,7 @@ public class LexicalDiversityServiceTest {
 
 
     @Test
-    void analyze_givenInvalidOrShortSentences_returnsOnlyValidSentence() {
+    void analyze_givenInvalidOrShortSentences_thenReturnOnlyValidSentence() {
         String s1 = "Short and boring"; // no '.', '!', '?'
         String s2 = "Tiny!";            // less than 5 words
         String s3 = "Legitimate sentences should actually end with punctuation.";
@@ -30,7 +30,7 @@ public class LexicalDiversityServiceTest {
     }
 
     @Test
-    void analyze_givenTrailingQuotesOrParens_returnsFirstEncounteredSentence() {
+    void analyze_givenTrailingQuotesOrParens_thenReturnFirstEncounteredSentence() {
         String s1 = "He whispered, \"try to be brave!\""; // ends with !"
         String s2 = "They responded us (of course).";     // ends with .)
         LexicalDiversityResult r = lexicalDiversityService.analyze(s1 + " " + s2);
@@ -38,7 +38,7 @@ public class LexicalDiversityServiceTest {
     }
 
     @Test
-    void analyze_givenTieInDiversity_returnsFirstEncounteredSentence() {
+    void analyze_givenTieInDiversity_thenReturnFirstEncounteredSentence() {
         String s1 = "Alpha beta gamma delta epsilon!";
         String s2 = "Zebra yak xerus wombat quokka!";
         LexicalDiversityResult r = lexicalDiversityService.analyze(s1 + " " + s2);
@@ -46,7 +46,7 @@ public class LexicalDiversityServiceTest {
     }
 
     @Test
-    void analyze_givenHeadingStyleSentence_returnsNonHeadingSentence() {
+    void analyze_givenHeadingStyleSentence_thenReturnNonHeadingSentence() {
         String heading = "CHAPTER IV. Introduction to Widgets.";
         String body   = "Widgets empower developers to prototype ideas remarkably quickly!";
         LexicalDiversityResult r = lexicalDiversityService.analyze(heading + " " + body);

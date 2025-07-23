@@ -11,7 +11,7 @@ public class WordLengthCountServiceTest {
     private final WordLengthCountService wordLengthCountService = new WordLengthCountService();
 
     @Test
-    void analyze_givenSimpleInput_whenCounted_shouldReturnMostFrequentLength() {
+    void analyze_givenSimpleInput_thenReturnMostFrequentLength() {
         String input = "hi go ok word";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -22,7 +22,7 @@ public class WordLengthCountServiceTest {
     }
 
     @Test
-    void analyze_givenLargeInput_whenManyTokens_shouldReturnMostFrequentLength() {
+    void analyze_givenLargeInput_thenReturnMostFrequentLength() {
         String input = "abcde ".repeat(100) + "cat ".repeat(80);
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -33,7 +33,7 @@ public class WordLengthCountServiceTest {
     }
 
     @Test
-    void analyze_givenTieOnFrequency_whenEqualCounts_shouldPickShorterLength() {
+    void analyze_givenTieOnFrequency_whenEqualCounts_thenReturnShorterLength() {
         String input = "hi cat";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -44,7 +44,7 @@ public class WordLengthCountServiceTest {
     }
 
     @Test
-    void analyze_givenWordsWithDigits_whenFiltered_shouldIgnoreThoseTokens() {
+    void analyze_givenWordsWithDigits_whenFiltered_thenIgnoreThoseWords() {
         String input = "ab3 123 foo";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -55,7 +55,7 @@ public class WordLengthCountServiceTest {
     }
 
     @Test
-    void analyze_givenSingleWord_shouldReturnItsLengthAndCountOne() {
+    void analyze_givenSingleWord_thenReturnItsLengthAndCountOne() {
         String input = "hippopotamus";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
@@ -66,7 +66,7 @@ public class WordLengthCountServiceTest {
     }
 
     @Test
-    void analyze_givenWordsWithApostrophes_whenKept_shouldReturnCorrectResult() {
+    void analyze_givenWordsWithApostrophes_whenKept_thenReturnCorrectResult() {
         String input = "don't cant can't";
         String[] cleanedWords = TextCleaner.cleanAndSplitWords(input);
 
