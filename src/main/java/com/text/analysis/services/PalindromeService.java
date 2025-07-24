@@ -1,6 +1,7 @@
 package com.text.analysis.services;
 
 import com.text.analysis.dto.PalindromesResult;
+import com.text.analysis.utils.TextCleaner;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -17,8 +18,7 @@ public class PalindromeService {
             boolean singleChar = word.chars().distinct().limit(2).count() == 1;
             if (singleChar) continue;
 
-            boolean onlyLetters = word.chars().allMatch(c -> (c >= 'a' && c <= 'z'));
-            if(result.contains(word) || !onlyLetters) continue;
+            if(result.contains(word) || TextCleaner.hasDigit(word)) continue;
             if(isPalindromic(word)) result.add(word);
         }
         long end = System.currentTimeMillis();
